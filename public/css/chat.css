@@ -1,0 +1,113 @@
+:root{
+    --colorSombraContenedores: rgba(0,0,0,0.25);
+    --colorBorde: #DBDBDB;
+    --colorMarca: #f0d201;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* button to icons */
+.btn-ico{
+    background: none;
+    border: none;
+}
+
+.btn-ico i{
+    font-size: 30px;
+}
+
+.btn-ico:hover{
+    color: var(--colorMarca);
+}
+
+/* button to icons */
+
+/* Chat template */
+.chat-container{
+    box-sizing: border-box;
+    width: 300px;
+    border: 1px solid var(--colorSombraContenedores);
+    border-bottom: 0;
+    border-radius: 15px 15px 0 0;
+    background: #FFFFFF;
+    -webkit-box-shadow: 0px -1px 8px 1px var(--colorSombraContenedores);
+    -moz-box-shadow: 0px -1px 8px 1px var(--colorSombraContenedores);
+    box-shadow: 0px -1px 8px 1px var(--colorSombraContenedores);
+    border-radius: 24px 24px 0px 0px;
+    position: absolute;
+    bottom: 0px;
+    right: 35px;
+}
+
+.user-pic{
+    width: 60px;
+    border-radius: 50%;
+}
+
+.chat-header{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    border: 2px solid var(--colorBorde);
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.chat-header h5{
+    margin-bottom: 0;
+}
+
+.chat-body{
+    padding: 5px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.chat-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid var(--colorBorde);
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.input{
+    background: none;
+    border: 2px solid var(--colorBorde);
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+}
+
+.chat-footer textarea.input {
+    resize: none;
+    overflow-y: auto;
+}
+
+.chat-footer .btn-ico{
+    margin: 0px 5px 0px 5px;
+}
+
+/*"Mensaje" IN and OUT messages */
+
+.mensaje-entrante{
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.mensaje-saliente{
+    word-wrap: break-word;
+    text-align: right;
+}
+
+
+/* Chat template */
