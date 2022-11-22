@@ -5,9 +5,10 @@ const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 const chatWith = get(".chatWith");
 const typing = get(".typing");
 const chatStatus = get(".chatStatus");
-const idChat = 10;
+var idChat = 10;
 var fecha = "";
 var hora = "";
+var ultimoMensaje;
 
 msgerForm.addEventListener("submit", event => {
   event.preventDefault();
@@ -21,10 +22,8 @@ msgerForm.addEventListener("submit", event => {
     fecha: fecha,
     hora: hora,
     contenido: msgText,
-    idChat: 10
+    idChat: idChat
   }).then(res => {
-    console.log(res);
-    console.log(res.data.fecha);
     appendMessage("mensaje-saliente", msgText, fecha + " " + hora);
   }).catch(error => {
     console.log("ha ocurrido un error\n"+error);
@@ -51,6 +50,42 @@ function appendMessage(side, text, date) {
   msgerChat.scrollTop += 500;
 }
 
+function recuperarMensajes(){
+  axios.get(`/message/get/${idChat}`, {
+  }).then(res => {
+    let idUsuario = res.data.idUsuario;
+    let mensajes = res.data.mensajes;
+    ultimoMensaje = mensajes[mensajes.length - 1].idMensaje;
+    mensajes.forEach(element => {
+      if(element.idUsuario == idUsuario){
+        appendMessage("mensaje-saliente", element.contenido, element.fecha + " " + element.hora);
+      }else{
+        appendMessage("mensaje-entrante", element.contenido, element.fecha + " " + element.hora);
+      }
+    });
+  }).catch(error => {
+    console.log("ha ocurrido un error\n"+error);
+  });
+
+  let nuevosMensajes = setInterval(function(){
+    axios.get(`/message/get/last/${idChat}/${ultimoMensaje}`, {
+    }).then(res => {
+      let idUsuario = res.data.idUsuario;
+      let mensajes = res.data.mensajes;
+      if(mensajes.length > 0){
+        ultimoMensaje = mensajes[mensajes.length - 1].idMensaje;
+        mensajes.forEach(element => {
+          if(element.idUsuario != idUsuario){
+            appendMessage("mensaje-entrante", element.contenido, element.fecha + " " + element.hora);
+          }
+        });
+      }
+    }).catch(error => {
+      console.log("ha ocurrido un error\n"+error);
+    });
+  }, 200);
+}
+
 // Utils
 function get(selector, root = document) {
   return root.querySelector(selector);
@@ -66,3 +101,5 @@ function formatDate(date) {
   fecha =`${y}-${mo}-${d}`;
   hora = `${h.slice(-2)}:${m.slice(-2)}`;
 }
+
+recuperarMensajes();

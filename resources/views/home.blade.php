@@ -29,14 +29,6 @@
         <div class="chat-visible">
             <div class="msger-chat chat-body">
             <!-- Acá cargarán los mensajes -->
-                <div class="mensaje-saliente"><p> >:v </p></div>
-                <div class="mensaje-entrante"><p> :') </p></div>
-                <div class="mensaje-saliente"><p> >:v </p></div>
-                <div class="mensaje-entrante"><p> :') </p></div>
-                <div class="mensaje-saliente"><p> >:v </p></div>
-                <div class="mensaje-entrante"><p> :') </p></div>
-                <div class="mensaje-saliente"><p> >:v </p></div>
-                <div class="mensaje-entrante"><p> :') </p></div>
             </div>
             <form action="chatDemo.html" class="chat-footer msger-inputarea">
                 @csrf

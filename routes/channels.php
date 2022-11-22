@@ -16,9 +16,3 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.Usuario.{idUsuario}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
-
-Broadcast::channel('chat.{idChat}', function ($user, $idChat){
-    if($user->chats()->contains($idChat)){
-        return $user;
-    }
-});
