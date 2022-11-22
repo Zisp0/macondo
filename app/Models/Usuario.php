@@ -23,4 +23,12 @@ class Usuario extends Model
         'correo',
         'contrasena'
     ];
+
+    public function chats(){
+        return $this->belongsToMany('App\Models\Chat');
+    }
+
+    public function messages(){
+        return $this->hasMany('App\Models\MensajesChat');
+    }
 }

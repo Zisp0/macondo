@@ -1,58 +1,67 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mitr&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="containerPrincipal">
-        <div class="containerLogin">
-            <div class="containerLogo">
-                <p>Macondo</p>
-            </div>
+<!doctype html>
+<html lang="sp">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600&family=Quicksand:wght@300;500;600&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+    <title>Login</title>
+
+    
+ 
+  </head>
+
+  
+
+    
+  <body>
+       
+      <div class="container w-75 mt-5 rounded shadow">
+        
+        <div class="marco align-items-stretch">
+          <div class="logo">
+            <h1 class="fw-bold text-center p-5"> <img src="img/logo.png" alt="logo"> Macondo </h1>
             
-            <form action="/" method="post">
-                @csrf
-                <div class="containerInputAndButton">
-                    <div>
-                        <label for="inputEmail" class="labelForInputEmail">Email</label>
-                        @if($correo)
-                            <input type="email" id="inputEmail" name="correo" value="{{$correo}}">
-                        @else
-                            <input type="email" id="inputEmail" name="correo" value="{{old('correo')}}">
-                        @endif
-                        @error ('correo')
-                            <small>{{$message}}</small>
-                        @enderror
-                        <small>{{$msjCorreo}}</small>
-                    </div>
-                    <div>
-                        <label for="inputPassword" class="labelForInputPassword">Contraseña</label>
-                        <input type="password" id="inputPassword" name="contrasena">
-                        @error ('contrasena')
-                            <small>{{$message}}</small>
-                        @enderror
-                        <small>{{$msjContra}}</small>
-                    </div>
-                    <a href="recuperarContraseña.php">¿Olvidaste tu contraseña?</a>
-                    <input type="submit" value="Iniciar Sesión" id="buttonLogIn">
-
-                    <div>
-                        <button id="loginGoogle">Google</button>
-                        <p>¿No tienes una cuenta? <a href="registro.php">Regístrate</a></p>
-                    </div>
-                </div> 
+            <!--login-->
+  
+            <form action="#" class="x">
+              <div class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email">
+                <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+              </div>
+              <br>
+              <div class="mb-4">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="contraseña">
+                <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+              </div>
+              <div class="my-3 text-center">
+                <span><a href="#">¿Olvidaste la contraseña?</a></span>
+              </div>
+              <div class="d-grid" >
+                <button type="submit" class="btn">Iniciar Sesión</button>
+              </div>
+              <div class="my-3 text-center">
+                <span>¿No tienes una cuenta? <a href="/registro">Registrate</a></span>
+              </div>
+              <br>
+              <br>
+              <br>
             </form>
+  
+          </div>                 
         </div>
-    </div>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</body>
+      </div>
+      
+</div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+  </div>
+  </body>
 </html>
+

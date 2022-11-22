@@ -1,0 +1,55 @@
+.form-label .red{
+    color: red;
+}
+
+.container{
+    
+    font-family: 'Quicksand';
+    font-style: normal;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    max-width: max-content;
+
+}
+
+.h1{
+    
+    font-family: 'Quicksand';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+.form-control{
+    background: #FAFAFA;
+    border: 2px solid #DBDBDB;
+    border-radius: 4px;
+}
+.d-grid{
+    background: #FFE000;
+    border: 2px solid #000000;
+    border-radius: 4px;
+}
+
+
+.x{
+    font-family: 'Quicksand';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.btn{
+    font-family: 'Quicksand';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+

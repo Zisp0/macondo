@@ -111,3 +111,17 @@
 
 
 /* Chat template */
+
+span.chatStatus.online {
+    color: #3dd7a5;
+}
+
+span.chatStatus.offline {
+    
+    color: #ef4444;
+}
+
+.typing {
+    font-size: 12px;
+    font-style: italic;
+}

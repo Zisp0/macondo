@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MensajesChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,9 @@ Route::resource('/usuario', UsuarioController::class);
 Route::get('/home', [HomeController::class, 'show']);
 
 Route::post('/logout', [HomeController::class, 'logout']);
+
+Route::get('/chat/with/{usuario}', [ChatController::class, 'chatWith']);
+
+Route::get('/chat/{chat}', [ChatController::class, 'show']);
+
+Route::post('message/sent', [MensajesChatController::class, 'sent']);

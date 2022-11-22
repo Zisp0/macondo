@@ -31,18 +31,6 @@ class LoginController extends Controller
             ->where('correo', $request->input('correo'))
             ->get();
 
-        /*$usuario = new Usuario;
-        $usuario->nombre = $datos->nombre;
-        $usuario->apellido = $datos->apellido;
-        $usuario->seudonimo = $datos->seudonimo;
-        $usuario->estado = $datos->estado;
-        $usuario->rol = $datos->rol;
-        $usuario->foto = $datos->foto;
-        $usuario->token = $datos->token;
-        $usuario->correo = $datos->correo;
-        $usuario->contrasena = Crypt::decryptString($datos->contrasena);
-        
-        return("si hay");*/
         $msjCorreo = NULL;
         $msjContra = NULL;
         if(count($datos) > 0){
