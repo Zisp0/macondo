@@ -28,17 +28,28 @@
             
             <!--login-->
   
-            <form action="#" class="x">
+            <form action="/" method= "post" class="x">
+              @csrf
               <div class="mb-4">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email">
-                <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                <label for="correo" class="form-label">Email</label>
+                @if($correo)
+                  <input type="email" class="form-control" name="correo" value="{{$correo}}">
+                @else
+                  <input type="email" class="form-control" name="correo" value="{{old('correo')}}">
+                @endif
+                @error ('correo')
+                  <label class="form-label"><h6 class="red">{{$message}}</h6></label>
+                @enderror
+                <label for="correo" class="form-label"><h6 class="red">{{$msjCorreo}}</h6></label>
               </div>
               <br>
               <div class="mb-4">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" name="contraseña">
-                <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                <label for="contrasena" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="contrasena">
+                @error ('contrasena')
+                <label for="contrasena" class="form-label"><h6 class="red">{{$message}}</h6></label>
+                @enderror
+                <label for="contrasena" class="form-label"><h6 class="red">{{$msjContra}}</h6></label>
               </div>
               <div class="my-3 text-center">
                 <span><a href="#">¿Olvidaste la contraseña?</a></span>

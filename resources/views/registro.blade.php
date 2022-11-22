@@ -33,62 +33,69 @@
             
             <!--Register-->
               <br>
-            <form action="#" class="x">
+            <form action="{{route('usuario.store')}}" method="post" class="x">
+              @csrf
               <div class="mb-4">
                 <div class="row">
                   <div class="col-md-6">
-                    <label for="Nombre" class="form-label">Nombre</label> 
-                    <input type="Nombre" class="form-control" name="Nombre">
-                    <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                    <label for="nombre" class="form-label">Nombre</label> 
+                    <input type="text" class="form-control" name="nombre" value="{{old('nombre')}}">
+                    @error('nombre')
+                      <label for="nombre" class="form-label"><h6 class="red">{{$message}}</h6></label>
+                    @enderror
                   </div>
                   <div class="col-md-6">
-                    <label for="Apellido" class="form-label">Apellido</label>
-                    <input type="Apellido" class="form-control" name="Apellido">
-                    <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="tex" class="form-control" name="apellido" value="{{old('apellido')}}">
+                    @error('apellido')
+                      <label for="apellido" class="form-label"><h6 class="red">{{$message}}</h6></label>
+                    @enderror
                   </div>
                 </div>
               </div>
               <div class="mb-4">
                 <div class="row">
                   <div class="col-md-6">
-                    <label for="Seudonimo" class="form-label">Seudónimo</label> 
-                    <input type="Seudonimo" class="form-control" name="Seudonimo">
-                    <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                    <label for="seudonimo" class="form-label">Seudonimo</label> 
+                    <input type="tex" class="form-control" name="seudonimo" value="{{old('seudonimo')}}">
+                    @error('seudonimo')
+                      <label for="seudonimo" class="form-label"><h6 class="red">{{$message}}</h6></label>
+                    @enderror
                   </div>
                   <div class="col-md-6">
-                    <label for="Email" class="form-label">Email</label>
-                    <input type="Email" class="form-control" name="Email">
-                    <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                    <label for="correo" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="correo" value="{{old('correo')}}">
+                    @error('correo')
+                      <label for="correo" class="form-label"><h6 class="red">{{$message}}</h6></label>
+                    @enderror
                   </div>
                 </div>
               </div>
               <div class="mb-4 text-center">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" name="contraseña">
-                <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                <label for="contrasena" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="contrasena">
+                @error('contrasena')
+                  <label for="contrasena" class="form-label"><h6 class="red">{{$message}}</h6></label>
+                @enderror
               </div>
               <div class="mb-4 text-center">
-                <label for="password" class="form-label">Confirmar contraseña</label>
-                <input type="password" class="form-control" name="Ccontraseña">
-                <label for="password" class="form-label"><h6 class="red">Este campo es obligatorio.</h6></label>
+                <label for="confirmarContrasena" class="form-label">Confirmar contraseña</label>
+                <input type="password" class="form-control" name="confirmarContrasena">
+                @error('confirmarContrasena')
+                  <label for="confirmarContrasena" class="form-label"><h6 class="red">{{$message}}</h6></label>
+                @enderror
               </div>
-            </form>
-            <form action="#" class="x">  
+
               <div class="mb-4">
                 <div class="row">
                   <div class="col-md-6">
-                    
                     <div class="d-grid" >
-                     
-                        <button type="submit" class="btn" style="background: #FAFAFA;">Cancelar</button>
-                      
+                    <a href="/" style="background: #FAFAFA;"  class="btn">Cancelar</a>
                     </div>
-                    
-                    
                   </div>
                   <div class="col-md-6">
                     <div class="d-grid" >
-                      <button type="submit" class="btn">Registrarme</button>
+                      <input type="submit" class="btn" value="Registrarme">
                     </div>
                   </div>
                 </div>
@@ -100,7 +107,6 @@
               <br>
               <br>
             </form>
-  
           </div>                 
         </div>
       </div>
