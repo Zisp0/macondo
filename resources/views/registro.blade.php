@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sp">
+<html lang="es">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -94,7 +94,7 @@
                 </div>
               </div>
               <div class="my-3 text-center">
-                <span>¿Ya tienes una cuenta? <a href="#">Ingresa</a></span>
+                <span>¿Ya tienes una cuenta? <a href="/">Ingresa</a></span>
               </div>
               <br>
               <br>
