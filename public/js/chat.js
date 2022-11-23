@@ -101,5 +101,3 @@ function formatDate(date) {
   fecha =`${y}-${mo}-${d}`;
   hora = `${h.slice(-2)}:${m.slice(-2)}`;
 }
-
-recuperarMensajes();

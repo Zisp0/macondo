@@ -10,37 +10,47 @@ class PublicacionController extends Controller
 {
     //
     public function postear(Request $request){
-        $idCategoria = DB::select("select `idCategoria` from `categoria` where `nombre` = `".$request->categoria."`");
-        
         $publicacion = new Publicacion;
         $publicacion->estado = "activa";
         $publicacion->fecha = $request->fecha;
         $publicacion->hora = $request->hora;
+        $publicacion->titulo = $request->titulo;
         $publicacion->contenido = $request->contenido;
         $publicacion->idUsuario = session('id');
-        $publicacion->idCategoria = $idCategoria;
+        $publicacion->idCategoria = $request->categoria;
         $publicacion->save();
 
-        /*$publicacion = array(
-            "fecha" => $request->fecha,
-            "hora" => $request->hora,
-            "contenido" => $request->contenido,
-            "idUsuario" => session('id')
-        );
-
-        $idCategoria = DB::select("select `idCategoria` from `categoria` where `nombre` = `".$request->categoria."`");
-        DB::insert("INSERT INTO publicacion (estado, fecha, hora, contenido, idUsuario, idCategoria) VALUES ('activa', '".$request->fecha."', '".$request->hora."', '".$request->contenido."', ".session('id').", ".$idCategoria.")");
-        */
         return $publicacion;
     }
 
     public function cargar(Request $request){
-        $publicaciones = DB::table('publicacion')
+        $prov = array();
+        $publicaciones = NULL;
+        if($request->categoria == "Inicio"){
+            $publicaciones = DB::table('publicacion')
             ->where('estado', 'activa')
             ->orderBy('idPublicacion', 'desc')
             ->get();
+        }else{
+            $idCategoria = DB::table('categoria')
+                ->where('nombre', $request->categoria)
+                ->get();
+            $publicaciones = DB::table('publicacion')
+            ->where('estado', 'activa')
+            ->where('idCategoria', $idCategoria[0]->idCategoria)
+            ->orderBy('idPublicacion', 'desc')
+            ->get();
+        }
+
+        foreach ($publicaciones as $indice => $valor) {
+            $usuario = DB::table('usuarios')
+            ->where('idUsuario', $publicaciones[$indice]->idUsuario)
+            ->get();
+            array_push($prov, array($publicaciones[$indice], $usuario[0]));
+        }
+
         $datos = array(
-            "mensajes" => $mensajes
+            "datos" => $prov
         );
         return $datos;
     }

@@ -1,0 +1,10 @@
+:root{
+    --colorSombraContenedores: rgba(0,0,0,0.25);
+    --colorBorde: #DBDBDB;
+    --colorMarca: #f0d201;
+    --colorFondo: #FFFFFF;
+    --colorFondoEnfasis: #eeeeee;
+    --colorTexto: #000000;
+    --reactionColor: #606770;
+    --colorMarcaFocus: rgba(255, 224, 0, 0.65);
+}

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MensajesChatController;
 use App\Http\Controllers\PublicacionController;
+use App\Http\Controllers\ComentarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::get('message/get/{idChat}', [MensajesChatController::class, 'get']);
 
 Route::get('message/get/last/{idChat}/{ultimo}', [MensajesChatController::class, 'last']);
 
-Route::post('/publicar', [PunlicacionController::class, 'postear']);
+Route::post('/publicar', [PublicacionController::class, 'postear']);
 
-Route::get('/cargar', [PunlicacionController::class, 'cargar']);
+Route::post('/cargar', [PublicacionController::class, 'cargar']);
+
+Route::post('/comentar', [ComentarioController::class, 'comentar']);
+
+Route::get('/verComentarios', [ComentarioController::class, 'cargar']);

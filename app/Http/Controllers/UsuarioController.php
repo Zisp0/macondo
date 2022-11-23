@@ -15,11 +15,11 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::all();
+        /*$usuarios = Usuario::all();
         foreach ($usuarios as $usuario) {
             $usuario->contrasena = Crypt::decryptString($usuario->contrasena);
         }
-        return $usuarios;
+        return $usuarios;*/
     }
 
     /**
@@ -67,6 +67,18 @@ class UsuarioController extends Controller
         $usuario->correo = $request->input('correo');
         $usuario->contrasena = Crypt::encryptString($request->input('contrasena'));
         $usuario->save();
+
+        $datos = DB::table('usuarios')
+            ->where('correo', $request->input('correo'))
+            ->get();
+
+        session([
+            'id' => $datos[0]->idUsuario,
+            'nombre' => $datos[0]->nombre,
+            'apellido' => $datos[0]->apellido
+        ]);
+
+        return redirect('/home');
     }
 
     /**

@@ -16,6 +16,7 @@ class Publicacion extends Model
         'estado',
         'fecha',
         'hora',
+        'titulo',
         'contenido',
         'idUsuario',
         'idCategoria'

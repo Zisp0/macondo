@@ -1,0 +1,365 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--colorFondoEnfasis);
+    height: 100%;
+    width: 100%;
+}
+
+input:focus{
+    outline: none;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+/* button to icons */
+.btn-ico{
+    background: none;
+    border: none;
+}
+
+.btn-ico i{
+    font-size: 30px;
+}
+
+.btn-ico:hover{
+    color: var(--colorMarca);
+}
+/* button to icons */
+
+.user-pic{
+    width: 60px;
+    border-radius: 50%;
+}
+
+.input{
+    background: none;
+    border: 2px solid var(--colorBorde);
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+}
+
+/*Header*/
+header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+    border-bottom: 2px inset var(--colorBorde);
+    background-color: var(--colorFondo);
+    z-index: 1;
+}
+
+header .header-container {
+	height: 8vh;
+	background-color: var(--colorFondo);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 15px 10px 15px;
+	transition: 0.3s ease background-color;
+}
+
+header a{
+    text-decoration: none;
+    color: var(--colorTexto);
+    transition: 0.2s color;
+}
+
+header a:hover{
+    color: var(--colorMarca);
+}
+
+.header-container .logo-web{
+    font-family: 'Mitr', sans-serif;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-web span{
+    margin-left: 5px;
+}
+
+.search .input:nth-child(1){
+    border-right: none;
+    color: var(--colorBorde);
+}
+
+.search .input:nth-child(1):hover{
+    color: var(--colorTexto);
+}
+
+.search button:hover{
+    background-color: var(--colorBorde);
+}
+
+.search .input:nth-child(2){
+    border-left: none;
+}
+
+.header-container .user-options{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .user-pic{
+    width: 80px;
+    margin-left: 35px;
+    cursor: pointer;
+}
+
+header .user-pic:hover{
+    transform: scale(1.2);
+}
+
+header #chatBtn{
+    cursor: pointer;
+}
+
+header #chatBtn i:hover{
+    transform: scale(1.2);
+}
+/*Header*/
+
+/*Aside Navigation*/
+aside{
+    background-color: var(--colorFondo);
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    border-right: 2px inset var(--colorBorde);
+}
+
+nav{
+    width: 100%;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: column;
+    margin-left: -32px;
+}
+
+nav ul button{
+    width: 100%;
+    font-size: 23px;
+    font-family: 'Mitr', sans-serif;
+    color: var(--colorTexto);
+    background-color: transparent;
+    border: none;
+    border-radius: 40px;
+}
+
+nav ul button:hover{
+    background-color: var(--colorBorde);
+}
+
+nav ul button:focus{
+    background-color: var(--colorMarcaFocus);
+}
+
+nav ul button li{
+    padding-left: 32px;
+}
+
+nav ul li{
+    list-style: none;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li i{
+    margin-right: 20px;
+}
+
+.item-nav.active{
+    background-color: var(--colorMarcaFocus);
+}
+
+.wordsize-container{
+    font-size: 18px;
+    font-family: 'Mitr', sans-serif;
+    color: var(--colorTexto);
+}
+
+.wordsize-container .input{
+    border-radius: 8px;
+}
+
+.wordsize-container button:hover{
+    background-color: var(--colorBorde);
+}
+
+/*Aside Navigation*/
+
+/*Main*/
+#containerMain{
+    position: relative;
+    margin-top: 10vh;
+    margin-left: 280px;
+}
+
+.containerPost{
+    width: 69%;
+    min-width: 350px;
+}
+
+.containerTrends{
+    background-color: var(--colorFondo);
+    width: 34%;
+    min-width: 250px;
+    top: 100%;
+    margin-left: 2px;
+    padding: 25px;
+}
+
+.publicar{
+    background-color: var(--colorFondo);
+    height: auto;
+    padding: 30px 20px 30px 20px;
+    margin-bottom: 2px;
+}
+
+.publicar .user-pic,.post .user-pic{
+    width: 80px;
+    margin-left: -10px;
+}
+
+.publicar .input{
+    width: 80%;
+    font-size: 20px;
+}
+
+.publicar .input:hover{
+    background-color: var(--colorBorde);
+}
+
+.modal-dialog .input{
+    border-radius: 8px;
+    width: 100%;
+}
+
+.modal-dialog .btn{
+    font-size: 20px;
+}
+
+.modal-title{
+    font-size: 30px;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: var(--colorFondoEnfasis);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem var(--colorMarcaFocus);
+}
+
+.form-select:focus {
+    border-color: var(--colorBorde);
+    outline: 0;
+    box-shadow: none;
+}
+
+.was-validated .form-select:invalid:not([multiple]):not([size]){
+    padding-right: 4.125rem;
+    background-position: right 0.75rem center,center right 2.25rem;
+    background-repeat: no-repeat;
+    background-size: 16px 12px,calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.was-validated .form-select:valid:not([multiple]):not([size]){
+    padding-right: 4.125rem;
+    background-position: right 0.75rem center,center right 2.25rem;
+    background-repeat: no-repeat;
+    background-size: 16px 12px,calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/*Tarjeta publicacion*/
+.post{
+    background-color: var(--colorFondo);
+    padding: 1px 20px 0px 20px;
+    margin-bottom: 2px;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, i{
+    color: var(--colorTexto);
+}
+
+.optionPost{
+    font-size: 25px;
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 12.5px;
+}
+
+.optionPost:hover{
+    background-color: var(--colorFondoEnfasis);
+}
+
+.postHeader{
+    margin-top: 10px;
+}
+
+.postHeader a{
+    text-decoration: none;
+    color: var(--colorTexto);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.postTxt{
+    word-spacing: 2px;
+    text-align: justify;
+    text-justify: kashida;
+}
+
+.postFooter .iconAct{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.comentar button.input:hover{
+    background-color: var(--colorBorde);
+}
+
+.comentarios{
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.comentarios .post{
+    border-bottom: 2px inset var(--colorBorde);
+}
+
+.dropdown-menu .user-pic{
+    width: 40px;
+    margin-left: -10px;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: var(--colorTexto);
+    background-color: var(--colorMarcaFocus);
+}
+
+.dropdown-menu {
+    --bs-dropdown-min-width: fit-content;
+}
