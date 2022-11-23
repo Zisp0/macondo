@@ -19,6 +19,7 @@ function cargarCategoria(categoria){
         categoria: categoria
     }).then(res => {
         let datos = res.data.datos;
+        console.log(datos);
         $(".publicaciones").empty();
         if(datos.length > 0){
             datos.forEach(element => {
@@ -88,28 +89,25 @@ function cargarCategoria(categoria){
                         </div>
                     </div>`
                 );
-
-                $("#comentarios"+element[0].idPublicacion).append(
-                    `<div class="post">
-                        <div class="postHeader d-flex justify-content-between align-items-center">
-                            <div class="photoName d-flex align-items-center">
-                                <img src="img/default_user.png" alt="" class="user-pic">
-                                <a href="">Usuario carenalga comenta</a>
-                            </div>
-                            <i class="fa-solid fa-ellipsis optionPost"></i>
-                        </div>
-                        <div class="postBody my-2">
-                        <p class="postTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit esse
-                            atque,voluptates eius
-                            consequatur excepturi nulla omnis quaerat ex vitae corrupti sint, autem recusandae enim nihil eos
-                            blanditiis laborum repellat? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-                            repellat
-                            doloribus officiis, ad autem quam cumque dolores maxime tenetur nulla quasi atque eos aliquam quas
-                            impedit
-                            id qui quidem neque.</p>
-                        </div>
-                    </div>`
-                );
+                
+                if(element[2].length > 0){
+                    element[2].forEach(comentario =>{
+                        $("#comentarios"+element[0].idPublicacion).append(
+                            `<div class="post">
+                                <div class="postHeader d-flex justify-content-between align-items-center">
+                                    <div class="photoName d-flex align-items-center">
+                                        <img src="img/default_user.png" alt="" class="user-pic">
+                                        <a href="">`+comentario[1].seudonimo+`</a>
+                                    </div>
+                                    <i class="fa-solid fa-ellipsis optionPost"></i>
+                                </div>
+                                <div class="postBody my-2">
+                                <p class="postTxt">`+comentario[0].contenido+`</p>
+                                </div>
+                            </div>`
+                        );
+                    });
+                }
             });
         }
         activarNeedsValidate();

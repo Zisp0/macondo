@@ -46,7 +46,18 @@ class PublicacionController extends Controller
             $usuario = DB::table('usuarios')
             ->where('idUsuario', $publicaciones[$indice]->idUsuario)
             ->get();
-            array_push($prov, array($publicaciones[$indice], $usuario[0]));
+            $comentarios = DB::table('comentario')
+            ->where('idPublicacion', $publicaciones[$indice]->idPublicacion)
+            ->orderby('idComentario', 'desc')
+            ->get();
+            $com = array();
+            foreach($comentarios as $idx => $val){
+                $user = DB::table('usuarios')
+                ->where('idUsuario', $comentarios[$idx]->idUsuario)
+                ->get();
+                array_push($com, array($comentarios[$idx], $user[0]));
+            }
+            array_push($prov, array($publicaciones[$indice], $usuario[0], $com));
         }
 
         $datos = array(
