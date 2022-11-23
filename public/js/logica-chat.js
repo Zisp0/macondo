@@ -7,7 +7,8 @@ $(document).ready(function () {
         $(".chat-visible").slideToggle(500);
     });
 
-    $(".closeChat").click(function (e) { 
+    $(".closeChat").click(function (e) {
+        clearInterval(nuevosMensajes);
         $(".chat-container").slideUp(500);
         $(".chat-visible").slideUp();
     });
@@ -37,7 +38,6 @@ function scrollChatToBottom(id) {
 function cargarChats(){
     axios.post(`/cargarChats`, {
     }).then(res => {
-        console.log(res.data)
         $("#cargaChats").empty();
         if(res.data[1].length > 0){
             res.data[1].forEach(element => {
@@ -59,9 +59,11 @@ function cargarChats(){
                 /*if(chatVisible == true && idUserChat != this.getAttribute('value')){
                     $(".chat-container").slideUp(500);
                 }*/
-                idUserChat = this.getAttribute('value');
+                idChat = this.getAttribute('value');
+                $(".chat-body").empty();
+                clearInterval(nuevosMensajes);
+                recuperarMensajes();
                 nombreUserChat = this.innerText;
-        
                 $("#nombreUserChat").text(nombreUserChat);
                 $(".chat-container").slideDown(500);
                 chatVisible = true;

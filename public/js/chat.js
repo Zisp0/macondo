@@ -9,6 +9,7 @@ var idChat;
 var fecha = "";
 var hora = "";
 var ultimoMensaje;
+var nuevosMensajes;
 
 msgerForm.addEventListener("submit", event => {
   event.preventDefault();
@@ -34,40 +35,42 @@ msgerForm.addEventListener("submit", event => {
 
 function appendMessage(side, text, date) {
   //   Simple solution for small apps
-  const msgHTML = `
+  let msgHTML = `
     <div class="${side}">
-      <div class="msg-bubble">
-        <div class="msg-info">
-          <div class="msg-info-time">${date}</div>
-        </div>
-
-        <div class="msg-text">${text}</div>
+      <div class="msg-info">
+        <div class="msg-info-time">${date}</div>
       </div>
+
+      <div class="msg-text">${text}</div>
     </div>
   `;
 
-  msgerChat.insertAdjacentHTML("beforeend", msgHTML);
-  msgerChat.scrollTop += 500;
+  $(".chat-body").append(msgHTML);
+  scrollChatToBottom(".chat-body");
 }
 
 function recuperarMensajes(){
   axios.get(`/message/get/${idChat}`, {
   }).then(res => {
+    console.log(res);
     let idUsuario = res.data.idUsuario;
     let mensajes = res.data.mensajes;
-    ultimoMensaje = mensajes[mensajes.length - 1].idMensaje;
-    mensajes.forEach(element => {
-      if(element.idUsuario == idUsuario){
-        appendMessage("mensaje-saliente", element.contenido, element.fecha + " " + element.hora);
-      }else{
-        appendMessage("mensaje-entrante", element.contenido, element.fecha + " " + element.hora);
-      }
-    });
+    if(mensajes.length > 0){
+      ultimoMensaje = mensajes[mensajes.length - 1].idMensaje;
+      mensajes.forEach(element => {
+        if(element.idUsuario == idUsuario){
+          appendMessage("mensaje-saliente", element.contenido, element.fecha + " " + element.hora);
+        }else{
+          appendMessage("mensaje-entrante", element.contenido, element.fecha + " " + element.hora);
+        }
+      });
+    }
   }).catch(error => {
     console.log("ha ocurrido un error\n"+error);
   });
 
-  let nuevosMensajes = setInterval(function(){
+  nuevosMensajes = setInterval(function(){
+    console.log("holi");
     axios.get(`/message/get/last/${idChat}/${ultimoMensaje}`, {
     }).then(res => {
       let idUsuario = res.data.idUsuario;
@@ -83,7 +86,7 @@ function recuperarMensajes(){
     }).catch(error => {
       console.log("ha ocurrido un error\n"+error);
     });
-  }, 200);
+  }, 500);
 }
 
 // Utils
