@@ -81,20 +81,6 @@ $(document).ready(function () {
         }
     });
 
-    $("#cargaChats .dropdown-item").click(function (e) { 
-        e.preventDefault();
-        //Prueba eso si quieres, es una forma de vista
-        /*if(chatVisible == true && idUserChat != this.getAttribute('value')){
-            $(".chat-container").slideUp(500);
-        }*/
-        idUserChat = this.getAttribute('value');
-        nombreUserChat = this.innerText;
-
-        $("#nombreUserChat").text(nombreUserChat);
-        $(".chat-container").slideDown(500);
-        chatVisible = true;
-    });
-
     $("#actCalificar .dropdown-item").click(function (e) { 
         e.preventDefault();
         let calificacionesPosibles = [1,2,3,4,5];

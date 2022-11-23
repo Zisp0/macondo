@@ -39,19 +39,22 @@ class ChatController extends Controller
             ->where('idUsuario', session('id'))
             ->get();
         
+        $datos = array();
         foreach ($chatU as $indice => $valor) {
             $other = DB::table('chatUsers')
                 ->where('idUsuario', '!=', session('id'))
+                ->where('idChat', $chatU[$indice]->idChat)
                 ->get();
 
             foreach ($other as $key => $value) {
                 $user = DB::table('usuarios')
                     ->where('idUsuario', $other[$key]->idUsuario)
                     ->get();
+                array_push($datos, array($other[$key], $user[0]));
             }
         }
 
 
-        return array($chatU[0], array($other, $user));
+        return array($chatU, $datos);
     }
 }

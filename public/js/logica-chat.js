@@ -12,6 +12,20 @@ $(document).ready(function () {
         $(".chat-visible").slideUp();
     });
 
+    $("#cargaChats .dropdown-item").click(function (e) { 
+        e.preventDefault();
+        //Prueba eso si quieres, es una forma de vista
+        /*if(chatVisible == true && idUserChat != this.getAttribute('value')){
+            $(".chat-container").slideUp(500);
+        }*/
+        idUserChat = this.getAttribute('value');
+        nombreUserChat = this.innerText;
+
+        $("#nombreUserChat").text(nombreUserChat);
+        $(".chat-container").slideDown(500);
+        chatVisible = true;
+    });
+    
     cargarChats();
 });
 
@@ -23,24 +37,38 @@ function scrollChatToBottom(id) {
 function cargarChats(){
     axios.post(`/cargarChats`, {
     }).then(res => {
+        console.log(res.data)
         $("#cargaChats").empty();
-        let chats = res.data[1][0];
-        let users = res.data[1][1];
         if(res.data[1].length > 0){
-            for(let i = 0; i < res.data[1].length; i++){
+            res.data[1].forEach(element => {
                 $("#cargaChats").append(
                     `<li>
-                        <a class="dropdown-item" href="#" value="`+chats[i].idChat+`">
+                        <a class="dropdown-item chatDis" href="#" value="`+element[0].idChat+`">
                             <div class="photoName d-flex align-items-center">
                                 <img src="img/default_user.png" alt="" class="user-pic">
-                                <span>`+users[i].nombre+` `+users[i].apellido,+`</span>
+                                <span>`+element[1].nombre+` `+element[1].apellido+`</span>
                             </div>
                         </a>
                     </li>`
                 );
-            }
+            });
+
+            $("#cargaChats .dropdown-item").click(function (e) { 
+                e.preventDefault();
+                //Prueba eso si quieres, es una forma de vista
+                /*if(chatVisible == true && idUserChat != this.getAttribute('value')){
+                    $(".chat-container").slideUp(500);
+                }*/
+                idUserChat = this.getAttribute('value');
+                nombreUserChat = this.innerText;
+        
+                $("#nombreUserChat").text(nombreUserChat);
+                $(".chat-container").slideDown(500);
+                chatVisible = true;
+            });
         }
     }).catch(error => {
+        console.log("ha ocurrido un error\n"+error);
     });
 }
 /* Scroll in chat to end */
