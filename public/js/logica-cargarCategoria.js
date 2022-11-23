@@ -19,7 +19,6 @@ function cargarCategoria(categoria){
         categoria: categoria
     }).then(res => {
         let datos = res.data.datos;
-        console.log(datos);
         $(".publicaciones").empty();
         if(datos.length > 0){
             datos.forEach(element => {

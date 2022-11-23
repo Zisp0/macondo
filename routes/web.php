@@ -38,6 +38,8 @@ Route::get('/chat/with/{usuario}', [ChatController::class, 'chatWith']);
 
 Route::get('/chat/{chat}', [ChatController::class, 'show']);
 
+Route::post('/cargarChats', [ChatController::class, 'cargar']);
+
 Route::post('message/sent', [MensajesChatController::class, 'sent']);
 
 Route::get('message/get/{idChat}', [MensajesChatController::class, 'get']);

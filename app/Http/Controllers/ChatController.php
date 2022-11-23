@@ -33,4 +33,25 @@ class ChatController extends Controller
 
         return 'hecho';
     }
+
+    public function cargar(Request $request){
+        $chatU = DB::table('chatUsers')
+            ->where('idUsuario', session('id'))
+            ->get();
+        
+        foreach ($chatU as $indice => $valor) {
+            $other = DB::table('chatUsers')
+                ->where('idUsuario', '!=', session('id'))
+                ->get();
+
+            foreach ($other as $key => $value) {
+                $user = DB::table('usuarios')
+                    ->where('idUsuario', $other[$key]->idUsuario)
+                    ->get();
+            }
+        }
+
+
+        return array($chatU[0], array($other, $user));
+    }
 }

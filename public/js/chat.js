@@ -5,7 +5,7 @@ const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 const chatWith = get(".chatWith");
 const typing = get(".typing");
 const chatStatus = get(".chatStatus");
-var idChat = 10;
+var idChat;
 var fecha = "";
 var hora = "";
 var ultimoMensaje;
