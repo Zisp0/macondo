@@ -12,12 +12,4 @@ class Chat extends Model
     protected $table = "chat";
     protected $primaryKey = "idChat";
     public $timestamps = false;
-
-    public function users(){
-        return $this->belongsToMany('App\Models\Usuario');
-    }
-
-    public function messages(){
-        return $this->hasMany('App\Models\MensajesChat');
-    }
 }

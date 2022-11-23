@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MensajesChat extends Model
+class Comentario extends Model
 {
     use HasFactory;
 
-    protected $table = "mensajesChat";
-    protected $primaryKey = "idMensaje";
+    protected $table = "comentario";
+    protected $primaryKey = "idComentario";
     public $timestamps = false;
-
     protected $fillable = [
+        'contenido',
+        'estado',
         'fecha',
         'hora',
-        'contenido',
-        'idChat',
-        'idUsuario'
+        'comentarioRespondido',
+        'idUsuario',
+        'idPublicacion'
     ];
 }
