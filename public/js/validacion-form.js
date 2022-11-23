@@ -1,8 +1,8 @@
-(() => {
+function activarNeedsValidate() {
   'use strict'
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
+  var forms = document.querySelectorAll('.needs-validation')
 
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
@@ -15,9 +15,7 @@
       form.classList.add('was-validated')
     }, false)
   })
-})()
-
-const inputs = document.querySelectorAll(".input");
+}
 
 function focusInput() {
   let parent = this.parentNode;
@@ -35,7 +33,11 @@ function blurInput() {
 
 }
 
-inputs.forEach((input) => {
-  input.addEventListener("focus", focusInput);
-  input.addEventListener("blur", blurInput);
-});
+function trimInputs(){
+  var inputs = document.querySelectorAll(".input");
+
+  inputs.forEach((input) => {
+    input.addEventListener("focus", focusInput);
+    input.addEventListener("blur", blurInput);
+  });
+}

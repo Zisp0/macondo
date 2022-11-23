@@ -59,7 +59,7 @@ $(document).ready(function () {
         $("#contenidoPublicacion").val("");
     });
 
-    $("#comentar").submit(function (e) { 
+    $(".pubCom").submit(function (e) { 
         e.preventDefault();
         idPublicacion = 1;
         contentComentario = $("#comentario").val();
@@ -67,7 +67,7 @@ $(document).ready(function () {
         //Si todo está bien se procede a enviar la info la DB
         if(contentComentario !== ""){
             console.log(contentComentario);
-
+            
             //despues de comentar Limpiamos el campo
             $("#comentario").val(" ")
         }
@@ -104,3 +104,18 @@ $(document).ready(function () {
         }
     });
 });
+
+function publicarComentario(datos){
+    formatDate(new Date());
+    axios.post('/comentar', {
+        fecha: fecha,
+        hora: hora,
+        contenido: datos.contentComentario,
+        idPublicacion: datos.idPublicacion
+    }).then(res => {
+        console.log(res);
+    }).catch(error => {
+        console.log("ha ocurrido un error\n"+error);
+    });
+    console.log(datos);
+}

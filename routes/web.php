@@ -49,5 +49,3 @@ Route::post('/publicar', [PublicacionController::class, 'postear']);
 Route::post('/cargar', [PublicacionController::class, 'cargar']);
 
 Route::post('/comentar', [ComentarioController::class, 'comentar']);
-
-Route::get('/verComentarios', [ComentarioController::class, 'cargar']);

@@ -74,12 +74,13 @@ function cargarCategoria(categoria){
                             </div>
                         </div>
                         <div class="collapse pb-2" id="collapseComentarios`+element[0].idPublicacion+`">
+                            <div class="comentarios" id="comentarios`+element[0].idPublicacion+`"></div>
                             <div class="comentar d-flex  align-items-center">
                                 <img src="img/default_user.png" alt="" class="user-pic">
-                                <form id="comentar" class="w-100 needs-validation" novalidate>
+                                <form id="comentar`+element[0].idPublicacion+`" class="w-100 needs-validation pubCom" novalidate>
                                     <div class="input-group ms-1">
                                         <input class="input form-control" type="text" placeholder="Comentar..." name="comentario" required
-                                        id="comentario"></input>
+                                        id="comentario`+element[0].idPublicacion+`"></input>
                                         <button class="input" type="submit"><i class="fa-regular fa-message"></i></button>
                                     </div>
                                 </form>
@@ -87,9 +88,49 @@ function cargarCategoria(categoria){
                         </div>
                     </div>`
                 );
+
+                $("#comentarios"+element[0].idPublicacion).append(
+                    `<div class="post">
+                        <div class="postHeader d-flex justify-content-between align-items-center">
+                            <div class="photoName d-flex align-items-center">
+                                <img src="img/default_user.png" alt="" class="user-pic">
+                                <a href="">Usuario carenalga comenta</a>
+                            </div>
+                            <i class="fa-solid fa-ellipsis optionPost"></i>
+                        </div>
+                        <div class="postBody my-2">
+                        <p class="postTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit esse
+                            atque,voluptates eius
+                            consequatur excepturi nulla omnis quaerat ex vitae corrupti sint, autem recusandae enim nihil eos
+                            blanditiis laborum repellat? Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+                            repellat
+                            doloribus officiis, ad autem quam cumque dolores maxime tenetur nulla quasi atque eos aliquam quas
+                            impedit
+                            id qui quidem neque.</p>
+                        </div>
+                    </div>`
+                );
             });
         }
+        activarNeedsValidate();
+        trimInputs();
+
+        $(".pubCom").submit(function (e) { 
+            e.preventDefault();
+            idPublicacion = this.getAttribute('id').substring(8);
+            contentComentario = $("#comentario"+idPublicacion).val();
+    
+            //Si todo está bien se procede a enviar la info la DB
+            if(contentComentario !== ""){
+                publicarComentario({idPublicacion, contentComentario});
+                //despues de comentar Limpiamos el campo
+                $("#comentario"+idPublicacion).val(" ")
+            }
+        });
+
     }).catch(error => {
         console.log("ha ocurrido un error\n"+error);
     });
+
+
 }

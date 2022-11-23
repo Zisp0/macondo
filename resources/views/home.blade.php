@@ -243,7 +243,7 @@
             </div>
             <div class="comentar d-flex  align-items-center">
               <img src="img/default_user.png" alt="" class="user-pic">
-              <form id="comentar" class="w-100 needs-validation" novalidate>
+              <form id="comentar" class="w-100 needs-validation pubCom" novalidate>
                 <div class="input-group ms-1">
                   <input class="input form-control" type="text" placeholder="Comentar..." name="comentario" required
                     id="comentario"></input>
